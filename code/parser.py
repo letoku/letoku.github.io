@@ -26,18 +26,18 @@ def get_openings(soup: bs4.BeautifulSoup) -> list[bs4.element.Tag]:
 
 
 def download_img(opening: bs4.element.Tag, opening_name: str) -> bool:
-    # img_tag = opening.find("img")
-    # if img_tag is None:
-    #     return False
-    # img_url = img_tag.get("src")
-    # if img_url is None:
-    #     return False
+    img_tag = opening.find("img")
+    if img_tag is None:
+        return False
+    img_url = img_tag.get("src")
+    if img_url is None:
+        return False
     
-    # img_name = os.path.join(IMAGES_DIR, opening_name)
-    # with open(img_name, "wb") as f:
-    #     img_data = requests.get(img_url).content
-    #     f.write(img_data)
-    #     print(f"Downloaded: {img_name}")
+    img_name = os.path.join(IMAGES_DIR, opening_name)
+    with open(img_name, "wb") as f:
+        img_data = requests.get(img_url).content
+        f.write(img_data)
+    print(f"Downloaded: {img_name}")
 
     return True
 
